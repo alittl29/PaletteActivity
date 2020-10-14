@@ -1,10 +1,11 @@
 package edu.temple.paletteactivity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +19,18 @@ public class MainActivity extends AppCompatActivity {
 
     GridView gvColors;
     ArrayList<Integer> colorList;
+    TextView txtInstructions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle(getString(R.string.paletteActivity));
+
+        txtInstructions = findViewById(R.id.textViewInstructions);
+        String instructions = getString(R.string.app_instructions);
+        txtInstructions.setText(instructions);
 
         colorList = new ArrayList<Integer>();
         colorList.add(Color.BLACK);

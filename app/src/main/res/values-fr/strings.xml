@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PaletteActivity</string>
+    <string name="paletteActivity">Activité de la palette</string>
+    <string name="canvasActivity">Activité de toile</string>
+    <string name="app_instructions">Cliquez sur une couleur ci-dessous pour lancer la toile</string>
+    <string-array name="colors_array">
+        <item>Noir</item>
+        <item>Blanche</item>
+        <item>Rouge</item>
+        <item>Bleue</item>
+        <item>Jaune</item>
+        <item>Vert</item>
+        <item>Gris</item>
+        <item>Ponk</item>
+        <item>Orange</item>
+    </string-array>
+</resources>

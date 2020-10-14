@@ -15,6 +15,8 @@ public class canvasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_canvas);
 
+        //set the title for the activity
+        setTitle(getString(R.string.canvasActivity));
         //
        View thisActivity = findViewById(R.id.activityCanvas);
        TextView textView = findViewById(R.id.textView);

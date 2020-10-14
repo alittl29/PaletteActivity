@@ -1,6 +1,7 @@
 package edu.temple.paletteactivity;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,6 +14,7 @@ public class ColorAdapter extends BaseAdapter {
 
     Context context;
     ArrayList<Integer> colorsList;
+
 
     //constructor
     public ColorAdapter(Context context, ArrayList<Integer> colorsList){
@@ -39,7 +41,8 @@ public class ColorAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         TextView textView;
-        String[] colorNames = {"Black", "White", "Red", "Blue", "Yellow", "Green", "Grey", "Pink", "Orange"};
+        Resources res = context.getResources();
+        String[] colorNames = res.getStringArray(R.array.colors_array);
 
 
         if(convertView == null)
