@@ -64,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putInt("selectedColor", position);
                 bundle.putString("colorName",((TextView)view).getText().toString());
 
-                Intent secondActivity = new Intent(MainActivity.this, canvasActivity.class);
-                secondActivity.putExtras(bundle);
+                //Intent secondActivity = new Intent(MainActivity.this, canvasActivity.class);
+                // secondActivity.putExtras(bundle);
 
                 //start the activity with the bundle
-                startActivity(secondActivity);
+                //startActivity(secondActivity);
             }
         });
 
