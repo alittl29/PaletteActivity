@@ -4,6 +4,7 @@
     <string name="paletteActivity">Activité de la palette</string>
     <string name="canvasActivity">Activité de toile</string>
     <string name="app_instructions">Cliquez sur une couleur ci-dessous pour lancer la toile</string>
+    <string name="interface_error">Doit implémenter itemClickInterface</string>
     <string-array name="colors_array">
         <item>Noir</item>
         <item>Blanche</item>

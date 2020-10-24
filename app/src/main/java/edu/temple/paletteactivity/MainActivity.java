@@ -2,6 +2,8 @@ package edu.temple.paletteactivity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,62 +17,48 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PaletteFragment.ItemClickedInterface {
 
-    GridView gvColors;
-    ArrayList<Integer> colorList;
-    TextView txtInstructions;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    PaletteFragment paletteFragment;
+    CanvasFragment canvasFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle(getString(R.string.paletteActivity));
+        paletteFragment = new PaletteFragment();
+        canvasFragment = new CanvasFragment();
 
-        txtInstructions = findViewById(R.id.textViewInstructions);
-        String instructions = getString(R.string.app_instructions);
-        txtInstructions.setText(instructions);
+        FragmentManager fragmentManager =  getSupportFragmentManager();
 
-        colorList = new ArrayList<Integer>();
-        colorList.add(Color.BLACK);
-        colorList.add(Color.WHITE);
-        colorList.add(Color.RED);
-        colorList.add(Color.BLUE);
-        colorList.add(Color.YELLOW);
-        colorList.add(Color.GREEN);
-        colorList.add(Color.GRAY);
-        colorList.add(Color.rgb(255, 182,193));
-        colorList.add(Color.rgb(255,165,0));
-
-        gvColors = findViewById(R.id.gvPaletteActivity);
-        gvColors.setNumColumns(3);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        if(!(getSupportFragmentManager().findFragmentById(R.id.container_1) instanceof PaletteFragment))
+        {
+            fragmentTransaction.add(R.id.container_1,paletteFragment);
+        }
+        if(!(getSupportFragmentManager().findFragmentById(R.id.container_2) instanceof CanvasFragment))
+        {
+            fragmentTransaction.add(R.id.container_2,canvasFragment);
+        }
 
 
-        ColorAdapter myAdapter = new ColorAdapter(this, colorList);
-        gvColors.setAdapter(myAdapter);
+        fragmentTransaction.commit();
 
 
-        //set the on click methods for the columns
-        gvColors.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //create a bundle with all the stuff needed
-                //array list for the background color
-                //int for the position
-                //string for the name
-                Bundle bundle = new Bundle();
-                bundle.putIntegerArrayList("ArrayList",colorList);
-                bundle.putInt("selectedColor", position);
-                bundle.putString("colorName",((TextView)view).getText().toString());
+    }
 
-                //Intent secondActivity = new Intent(MainActivity.this, canvasActivity.class);
-                // secondActivity.putExtras(bundle);
+    @Override
+    public void itemClicked() {
 
-                //start the activity with the bundle
-                //startActivity(secondActivity);
-            }
-        });
+        int selectedColor =  paletteFragment.getColor();
+        String colorName = paletteFragment.getColorName();
+
+        canvasFragment.setColor(selectedColor);
+        canvasFragment.setColorText(colorName);
+
 
     }
 }

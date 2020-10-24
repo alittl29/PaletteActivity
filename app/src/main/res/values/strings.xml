@@ -3,6 +3,7 @@
     <string name="paletteActivity">Main Activity</string>
     <string name="canvasActivity">Canvas Activity</string>
     <string name="app_instructions">Click a color below to launch the canvas</string>
+    <string name="interface_error">Must implement itemClickInterface</string>
     <string-array name="colors_array">
         <item>Black</item>
         <item>White</item>
